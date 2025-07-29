@@ -1,3 +1,5 @@
+// nuxt.config.ts
+
 import { provider } from 'std-env'
 import { currentLocales } from './i18n/i18n'
 
@@ -84,6 +86,14 @@ export default defineNuxtConfig({
         },
       },
     },
+    // ADD THIS BLOCK TO FIX THE ISSUE
+    externals: {
+      external: [
+        '@vue/shared',
+        '@vue/server-renderer'
+      ]
+    }
+    // END OF FIX
   },
 
   hub: {
