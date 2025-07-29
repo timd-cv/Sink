@@ -85,19 +85,25 @@ export default defineNuxtConfig({
         },
       },
     },
-    // Use the cloudflare-specific configuration
-    cloudflare: {
-      compatibilityDate: '2024-04-03', // Or the current date from the log
-      compatibilityFlags: ['nodejs_compat'], // Important for Nuxt 3 compatibility
-      // Explicitly tell the Cloudflare bundler to not include these modules
-      // This is a more direct way of handling it for this specific preset.
-      // We will remove the generic externals block and use this instead.
-      // This setting should work for the wrangler build step.
+    preset: 'cloudflare', // Explicitly set the preset
+    // Add external dependencies directly under nitro.
+    // This ensures they are marked external for the bundler, regardless of the preset.
+    externals: {
+      // The `node-server` build might need these as well, so it's good to keep them here.
       external: [
         '@vue/shared',
         '@vue/server-renderer'
+      ],
+      // We can also use this to handle the "sideEffects" warnings.
+      inline: [
+        // Add modules here if their side effects are necessary
+        // For now, we'll just focus on the errors.
       ]
-    }
+    },
+    cloudflare: {
+      compatibilityDate: '2024-04-03',
+      compatibilityFlags: ['nodejs_compat'],
+    },
   },
 
   hub: {
