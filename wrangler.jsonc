@@ -1,8 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sink",
-  "main": "or/.output/server/index.mjs",
-
   "pages_build_output_dir": "./or/.output/public",
   "build": {
     "command": "pnpm run build",
@@ -11,17 +9,16 @@
       "@vue/server-renderer"
     ]
   },
-
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "./or/.output/public"
-  },
   "compatibility_date": "2025-05-08",
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "keep_vars": true,
-  "upload_source_maps": true,
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "c74bb7a0e69b43948ad27f4a1adb43f2" // IMPORTANT: Change this to your KV namespace ID
+    }
+  ],
   "ai": {
     "binding": "AI"
   },
@@ -29,12 +26,6 @@
     {
       "binding": "ANALYTICS",
       "dataset": "sink"
-    }
-  ],
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "c74bb7a0e69b43948ad27f4a1adb43f2" // IMPORTANT: Change this to your KV namespace ID
     }
   ]
 }
