@@ -10,7 +10,7 @@
       "@vue/shared",
       "@vue/server-renderer"
     ]
-  }
+  },
 
   "assets": {
     "binding": "ASSETS",
