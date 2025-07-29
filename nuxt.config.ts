@@ -1,5 +1,4 @@
 // nuxt.config.ts
-
 import { provider } from 'std-env'
 import { currentLocales } from './i18n/i18n'
 
@@ -86,14 +85,19 @@ export default defineNuxtConfig({
         },
       },
     },
-    // ADD THIS BLOCK TO FIX THE ISSUE
-    externals: {
+    // Use the cloudflare-specific configuration
+    cloudflare: {
+      compatibilityDate: '2024-04-03', // Or the current date from the log
+      compatibilityFlags: ['nodejs_compat'], // Important for Nuxt 3 compatibility
+      // Explicitly tell the Cloudflare bundler to not include these modules
+      // This is a more direct way of handling it for this specific preset.
+      // We will remove the generic externals block and use this instead.
+      // This setting should work for the wrangler build step.
       external: [
         '@vue/shared',
         '@vue/server-renderer'
       ]
     }
-    // END OF FIX
   },
 
   hub: {
