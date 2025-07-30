@@ -24,10 +24,10 @@ const { title, github } = useAppConfig()
               <img
                 src="https://assets.central-valley.com/cv/CV_Circle.png"
                 :alt="title"
-                class="w-full h-full rounded-full"
+                class="w-full rounded-full"
               >
             </span>
-            <span class="mx-2">Central Valley Link Shortner: {{ title }}</span>
+            <span class="mx-2">Central Valley Link Shortener</span>
           </a>
         </div>
 

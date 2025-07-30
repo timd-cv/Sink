@@ -27,10 +27,6 @@ const { title } = useAppConfig()
           {{ $t('dashboard.title') }}
         </BreadcrumbLink>
       </BreadcrumbItem>
-      <BreadcrumbSeparator />
-      <BreadcrumbItem>
-        <BreadcrumbPage>{{ title }}</BreadcrumbPage>
-      </BreadcrumbItem>
     </BreadcrumbList>
 
     <DashboardLogout />
